@@ -536,15 +536,13 @@ ul { list-style: none; }
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
-.media-card-master img { aspect-ratio: 4 / 5; }
-
 /* ===== MASTERS SECTION ===== */
 .masters-section {}
 
 .masters-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 .master-card {
@@ -552,67 +550,79 @@ ul { list-style: none; }
   border: 1px solid rgba(239,68,68,.18);
   border-radius: 12px;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 0;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.master-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(239,68,68,.15);
+}
+
+.master-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #111;
+}
+
+.master-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s;
+}
+
+.master-card:hover .master-photo img {
+  transform: scale(1.05);
 }
 
 .master-info {
-  padding: 20px 16px;
-  border-right: 1px solid rgba(239,68,68,.12);
+  padding: 14px 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  justify-content: center;
+  gap: 5px;
 }
 
 .master-name {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #f1f5f9;
 }
 
 .master-spec {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: #f87171;
   line-height: 1.4;
 }
 
 .master-exp {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: #94a3b8;
-}
-
-.master-works {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-
-.master-works .media-card {
-  margin: 0;
-  border-radius: 0;
-  aspect-ratio: 1 / 1;
-  border: none;
-  border-left: 1px solid rgba(239,68,68,.1);
-}
-
-.master-works .media-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  margin-top: 2px;
 }
 
 @media (max-width: 600px) {
-  .master-card {
-    grid-template-columns: 1fr;
+  .masters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
   .master-info {
-    border-right: none;
-    border-bottom: 1px solid rgba(239,68,68,.12);
+    padding: 10px 12px 14px;
   }
-  .master-works {
+  .master-name {
+    font-size: 0.95rem;
+  }
+  .master-spec {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .masters-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 }
