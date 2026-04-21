@@ -1,2 +1,0 @@
-# ratingtattoo.ru
-ratingtattoo.ru
